@@ -1,0 +1,67 @@
+/* 新帳號頁面容器 */
+.newAccountPage {
+  width: 1000px;
+  height: 500px;
+  min-height: 300px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  color: black;
+  position: relative;
+}
+
+/* 表單容器 */
+.formContainer {
+  max-width: 400px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+/* 表單輸入框與文字區域 */
+input, textarea {
+  display: block;
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.6rem;
+  border-radius: 10px;
+}
+
+/* 按鈕樣式 */
+button {
+  padding: 0.6rem 1.2rem;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Next 按鈕樣式 */
+.nextButton {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+  font-size: 16px;
+}
+
+.nextButton:hover {
+  background-color: #45a049;
+}
+
+.nextButton:active {
+  transform: scale(0.95);
+}
+
+

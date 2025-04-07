@@ -1,0 +1,76 @@
+.theme-toggle {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: #f0f0f0;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.theme-toggle.dark {
+  background: #2c2c2c;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle .sun {
+  color: #ffd700;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.theme-toggle .moon {
+  color: #6b6b6b;
+  opacity: 0;
+  transform: scale(0.5);
+}
+
+.dark .theme-toggle .sun {
+  opacity: 0;
+  transform: scale(0.5);
+}
+
+.dark .theme-toggle .moon {
+  opacity: 1;
+  transform: scale(1);
+  color: #ffd700;
+}
+
+/* Hover effects */
+.theme-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.theme-toggle:active {
+  transform: scale(0.95);
+}
+
+/* Focus styles for accessibility */
+.theme-toggle:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+}
+
+/* Dark mode specific hover effects */
+.dark .theme-toggle:hover {
+  background: #363636;
+}
+
+/* Light mode specific hover effects */
+.light .theme-toggle:hover {
+  background: #e0e0e0;
+} 
