@@ -17,23 +17,26 @@
   --border-dark: #444; /* Dark Mode 邊框顏色 */
 
   --transition-duration: 0.3s;
+  --bg-rgb-light: 248, 248, 248;
 }
 
 /* Dark Mode 和 Light Mode 設置 */
-[data-theme='dark'] {
-  --bg-color: var(--bg-dark);
-  --text-color: var(--text-dark);
-  --input-bg: var(--input-dark);
-  --button-bg: var(--button-dark);
-  --border-color: var(--border-dark);
-}
-
 [data-theme='light'] {
   --bg-color: var(--bg-light);
   --text-color: var(--text-light);
   --input-bg: var(--input-light);
   --button-bg: var(--button-light);
   --border-color: var(--border-light);
+  --bg-rgb: 248, 248, 248; /* #f8f8f8 的 RGB */
+}
+
+[data-theme='dark'] {
+  --bg-color: var(--bg-dark);
+  --text-color: var(--text-dark);
+  --input-bg: var(--input-dark);
+  --button-bg: var(--button-dark);
+  --border-color: var(--border-dark);
+  --bg-rgb: 30, 30, 30; /* #1e1e1e 的 RGB */
 }
 
 /* 基本全局樣式 */
@@ -125,7 +128,6 @@ textarea {
   background: none;
   padding: 20px;
   border-radius: 12px;
-  border: 1px solid var(--border-color);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   width: 100%;
   max-width: 500px;
@@ -137,8 +139,6 @@ h1 {
   text-align: center;
   margin-bottom: 16px;
 }
-
-
 
 /* 懸浮效果 */
 button:hover,

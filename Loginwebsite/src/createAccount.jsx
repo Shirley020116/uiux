@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Steps } from 'antd';
 import './NewAccount.css';
-import ThemeToggle from './components/ThemeToggle';
+import ThemeToggle from './components/ThemeToggle'; // 若有其他必要的元件可以引入
+import { Textarea } from './components/TextArea';  // 引入 Textarea 元件
 
 const NewAccount = () => {
   const [step, setStep] = useState(0);
+  const [selectedOptions, setSelectedOptions] = useState([]);
   const navigate = useNavigate();
 
   const nextStep = () => {
@@ -18,6 +20,26 @@ const NewAccount = () => {
     } else {
       setStep(prev => prev - 1);
     }
+  };
+  const lastStep = () => {
+    // 顯示註冊完成訊息
+    alert('Registration completed successfully!');
+
+    // 跳轉到登入頁面
+    navigate('/');
+  };
+
+
+  const handleSelect = (option) => {
+    setSelectedOptions((prevState) => {
+      if (prevState.includes(option)) {
+        // 如果選項已被選擇，則移除它
+        return prevState.filter((item) => item !== option);
+      } else {
+        // 如果選項未被選擇，則將其添加
+        return [...prevState, option];
+      }
+    });
   };
 
   const renderStepContent = () => {
@@ -46,25 +68,31 @@ const NewAccount = () => {
         );
       case 3:
         return (
-          <>
-            <label><input type="checkbox" /> Music</label>
-            <label><input type="checkbox" /> Sports</label>
-            <label><input type="checkbox" /> Coding</label>
-          </>
+          <div className="selection-grid">
+            <div
+              className={`selectable ${selectedOptions.includes('Music') ? 'selected' : ''}`}
+              onClick={() => handleSelect('Music')}
+            >
+              Music
+            </div>
+            <div
+              className={`selectable ${selectedOptions.includes('Sports') ? 'selected' : ''}`}
+              onClick={() => handleSelect('Sports')}
+            >
+              Sports
+            </div>
+            <div
+              className={`selectable ${selectedOptions.includes('Coding') ? 'selected' : ''}`}
+              onClick={() => handleSelect('Coding')}
+            >
+              Coding
+            </div>
+          </div>
         );
       case 4:
         return (
           <div className="summary">
-            <h2>✅ Check Your All Details</h2>
-            <p><strong>Username:</strong> (example_user)</p>
-            <p><strong>Full Name:</strong> (Jane Doe)</p>
-            <p><strong>Birthday:</strong> (2000-01-01)</p>
-            <p><strong>Location:</strong> (Taipei)</p>
-            <p><strong>Email:</strong> (jane@example.com)</p>
-            <p><strong>Phone:</strong> (0912-345-678)</p>
-            <p><strong>Hobbies:</strong> Music, Coding</p>
-            <p><strong>Introduction:</strong> I'm passionate about learning new things and coding!</p>
-            <button type="submit" className="stepButton">Create Account</button>
+            <Textarea placeholder="Enter your message..." />
           </div>
         );
       default:
@@ -82,7 +110,6 @@ const NewAccount = () => {
 
   return (
     <div className="newAccountPage">
-      <ThemeToggle />
       <div className="stepContainer">
         <Steps current={step} items={stepsItems} />
       </div>
@@ -93,11 +120,16 @@ const NewAccount = () => {
           {renderStepContent()}
           <div className="buttonGroup">
             <button type='button' className='stepButton' onClick={preStep}>
-              {step === 0 ? 'Back to Login' : 'Prev'}
+              {step === 0 ? 'Home' : 'Prev'}
             </button>
             {step < 4 && (
               <button type='button' className='stepButton' onClick={nextStep}>
                 Next
+              </button>
+            )}
+            {step === 4 && (
+              <button type='button' className='stepButton' onClick={lastStep}>
+                Submit
               </button>
             )}
           </div>
