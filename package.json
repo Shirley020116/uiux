@@ -9,7 +9,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "git add dist && git commit -m 'deploy' && git subtree push --prefix dist origin de"
   },
   "dependencies": {
     "@react-oauth/google": "^0.12.1",
